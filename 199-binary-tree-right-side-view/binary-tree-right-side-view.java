@@ -19,42 +19,21 @@ class Solution {
         if(root==null)
         return ans;
 
-        Queue<TreeNode> q=new LinkedList<>();
-        q.add(root);
-     ans.add(root.val);
-        while(!q.isEmpty())
-        {    //List<Integer> end=new ArrayList<Integer>();
-        int v=-1;
-        int l=q.size();
-            for(int i=0;i<l;i++)
-            {
-                if(q.peek().left!=null)
-                {
-                    q.add(q.peek().left);
-                    //end.add(q.peek().left.val);
-                    v=q.peek().left.val;
-                    
-                }
-                if(q.peek().right!=null)
-                {
-                    q.add(q.peek().right);
-                   // end.add(q.peek().right.val);
-                   v=q.peek().right.val;
-                }
-
-                q.remove();
-            }
-            // if(end.size()!=0)
-            // {
-            // int l=end.size()-1;
-            // ans.add(end.get(l));
-            // }
-            if(v!=-1)
-            ans.add(v);
-        }
+       view(root,0,ans);
 
         return ans;
 
 
+    }
+
+    public void view(TreeNode root,int level,List<Integer> ans)
+    {
+        if(root==null)
+        return ;
+        if(ans.size()==level)
+        ans.add(root.val);
+
+        view(root.right,level+1,ans);
+         view(root.left,level+1,ans);
     }
 }
