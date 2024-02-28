@@ -32,8 +32,9 @@ class Solution {
         return ;
         if(ans.size()==level)
         ans.add(root.val);
-
+       if(root.right!=null)
         view(root.right,level+1,ans);
+        if(root.left!=null)
          view(root.left,level+1,ans);
     }
 }
